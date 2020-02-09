@@ -1,0 +1,36 @@
+--CREATE TABLE SCRIPTS
+
+create table professor
+(
+	professorId smallint constraint uk_professorId unique not null, 
+	professorName nvarchar(50) not null,
+	courseName nvarchar(50) constraint pk_coursename primary key
+)
+
+create table student
+(
+	studentId smallint constraint uk_studentId unique not null,
+	studentName nvarchar(50) not null,
+	courseName nvarchar(50) constraint fk_courseName references professor(courseName)
+)
+
+--INSERT SCRIPTS
+
+insert into professor values (1,'Gaurav','Btech');
+insert into professor values (2,'Ayush','Mtech');
+insert into professor values (3,'Prakash','Phd');
+insert into professor values (4,'Arun','Diploma');
+
+insert into student values (1,'Ankit','Btech');
+insert into student values (2,'Debjoti','Mtech');
+insert into student values (3,'Sameer','Phd');
+insert into student values (4,'Priyanka','Btech');
+insert into student values (5,'Vijay','Mtech');
+insert into student values (6,'Vivek','Phd');
+insert into student values (7,'Bhavna','Mtech');
+
+
+-- Fetching data
+
+select * from professor
+select * from student
