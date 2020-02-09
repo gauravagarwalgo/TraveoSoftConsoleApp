@@ -1,0 +1,1 @@
+select coursename from professor where professorname = '{0}'
