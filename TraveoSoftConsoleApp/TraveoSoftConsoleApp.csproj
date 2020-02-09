@@ -6,12 +6,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="SQL queries\DeleteProfessorFromDatabaseBasedOnName.sql" />
+    <None Remove="SQL queries\DeleteStudentFromDatabaseBasedOnName.sql" />
     <None Remove="SQL queries\GetAllStudentsUnderAllProfessor.sql" />
     <None Remove="SQL queries\GetCourseNameBypassingProfessorName.sql" />
     <None Remove="SQL queries\GetProfessorName.sql" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="SQL queries\DeleteProfessorFromDatabaseBasedOnName.sql" />
+    <EmbeddedResource Include="SQL queries\DeleteStudentFromDatabaseBasedOnName.sql" />
     <EmbeddedResource Include="SQL queries\GetAllStudentsUnderAllProfessor.sql" />
     <EmbeddedResource Include="SQL queries\GetCourseNameBypassingProfessorName.sql" />
     <EmbeddedResource Include="SQL queries\GetProfessorName.sql" />

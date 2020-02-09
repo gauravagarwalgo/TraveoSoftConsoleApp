@@ -56,7 +56,7 @@ namespace TraveoSoftConsoleApp
 
             //Getting all the professor names by calling the repository method Get professor names
             var professorNames = personRepository.GetprofessorNames();
-            
+
             //Getting the desired output
             for (int i = 0; i < professor.Count; i++)
             {
@@ -66,15 +66,15 @@ namespace TraveoSoftConsoleApp
 
                     //Calling repository method to get the course that teacher takes
                     var courseName = personRepository.GetCourseName(professor[i]);
-                    Console.WriteLine(professor[i] +" (" +courseName[0] + " Professor)" );
+                    Console.WriteLine(professor[i] + " (" + courseName[0] + " Professor)");
                     Console.WriteLine("*****************");
-                    
+
                     Console.WriteLine("Student under this professor\n------------------------");
                 }
-                else 
+                else
                 {
                     //checking if the professor has no student. Since left join is used in query, so we will get studentName as null
-                    if(professor[i]==null)
+                    if (professor[i] == null)
                     {
                         Console.WriteLine("Sorry no student is associated with this professor!!");
                     }
@@ -82,6 +82,32 @@ namespace TraveoSoftConsoleApp
                 }
             }
             Console.WriteLine("------------------------");
+        }
+
+        #endregion
+
+        #region Delete student from database
+
+        /// <summary>
+        /// Method to represent delete student from database
+        /// </summary>
+        /// <param name="name"></param>
+        public void DeleteStudentFromDatabase(string name)
+        {
+            personRepository.DeleteStudentFromDatabase(name);
+        }
+
+        #endregion
+
+        #region Delete professor from database
+
+        /// <summary>
+        /// Method to represent delete professor from database
+        /// </summary>
+        /// <param name="name"></param>
+        public void DeleteProfessorFromDatabase(string name)
+        {
+            personRepository.DeleteProfessorFromDatabase(name);
         }
 
         #endregion
@@ -96,9 +122,48 @@ namespace TraveoSoftConsoleApp
         {
             //Creating instance of Program class
             Program p = new Program();
+            do
+            {
+                Console.WriteLine("Select options to continue\n");
+                Console.WriteLine("1.Getting the final result\n2.Delete student from database\n"+
+                    "3.Delete professor from database\n4.Exit\n");
+                var choice = Convert.ToInt32(Console.ReadLine());
+                switch (choice)
+                {
+                    //calling GetStudentAndProfessor method of program class
+                    case 1:
+                        Console.WriteLine("The professor and associated student list as follows\n");
+                        p.GetStudentAndProfessor();
+                        Console.WriteLine("---------------------------------------------------");
+                        break;
 
-            //calling GetStudentAndProfessor method of program class
-            p.GetStudentAndProfessor();
+                    //Deleting student from database by passing valid student name
+                    case 2:
+                        Console.WriteLine("Please enter student name you want to delete\n");
+                        var toDeleteStudent = Console.ReadLine();
+                        p.DeleteStudentFromDatabase(toDeleteStudent);
+                        Console.WriteLine("---------------------------------------------------");
+                        break;
+
+                    //Deleting professor from database by passing valid professor name
+                    case 3:
+                        Console.WriteLine("Please enter professor name you want to delete\n");
+                        var toDeleteProfessor = Console.ReadLine();
+                        p.DeleteProfessorFromDatabase(toDeleteProfessor);
+                        Console.WriteLine("---------------------------------------------------");
+                        break;
+                    //Exit out of loop
+                    case 4:
+                        Environment.Exit(0);
+                        break;
+
+                    // If none of the above choice is selected
+                    default:
+                        Console.WriteLine("Invalid Choice");
+                        Console.WriteLine("---------------------------------------------------");
+                        break;
+                }
+            } while (true);
         }
 
         #endregion

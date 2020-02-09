@@ -25,5 +25,17 @@ namespace TraveoSoftConsoleApp.Interfaces
         /// <param name="professorName"></param>
         /// <returns></returns>
         IList<string> GetCourseName(string professorName);
+
+        /// <summary>
+        /// Represents method to delete student from database
+        /// </summary>
+        /// <param name="studentName"></param>
+        void DeleteStudentFromDatabase(string studentName);
+
+        /// <summary>
+        /// Method to represent delete professor from database
+        /// </summary>
+        /// <param name="professorName"></param>
+        void DeleteProfessorFromDatabase(string professorName);
     }
 }

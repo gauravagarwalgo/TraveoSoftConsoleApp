@@ -110,6 +110,34 @@ namespace TraveoSoftConsoleApp
 
         #endregion
 
+        #region Delete student from database
+
+        /// <summary>
+        /// Represents method to delete student from database
+        /// </summary>
+        /// <param name="studentName"></param>
+        public void DeleteStudentFromDatabase(string studentName)
+        {
+            string query = string.Format(CultureInfo.CurrentCulture, _generateQuery.GetString("DeleteStudentFromDatabaseBasedOnName.sql"), studentName);
+            _dbConnection.Execute(query);
+        }
+
+        #endregion
+
+        #region Delete professor from database
+
+        /// <summary>
+        /// Represents method to delete professor from database
+        /// </summary>
+        /// <param name="professorName"></param>
+        public void DeleteProfessorFromDatabase(string professorName)
+        {
+            string query = string.Format(CultureInfo.CurrentCulture, _generateQuery.GetString("DeleteProfessorFromDatabaseBasedOnName.sql"), professorName);
+            _dbConnection.Execute(query);
+        }
+
+        #endregion
+
         #endregion
 
         #region Dispose Methods

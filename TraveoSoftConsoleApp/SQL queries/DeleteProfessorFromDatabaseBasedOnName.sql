@@ -1,0 +1,1 @@
+delete from professor where professorName='{0}'
